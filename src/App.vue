@@ -1,18 +1,42 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <button @click="reset">Reset Value</button>
+
+    <!-- TODO: component clickCookie (no children) -->
+    <click-cookie/>
+    <!---->
+
+    <!-- TODO: component atoutCookie (cursor, grandma) -->
+    <atout-cookie/>
+    <!---->
+
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ClickCookie from "./components/clickCookie";
+import AtoutCookie from "./components/atoutCookie";
+import { atout } from './store'
+import { mapGetters } from 'vuex'
 
 export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
+    name: 'app',
+    components: {
+        AtoutCookie,
+        ClickCookie,
+    },
+    methods: {
+        reset: function () {
+            this.$cookie.set('score', 0);
+            this.$cookie.set('grandma', 0);
+            this.$cookie.set('cursor', 0);
+        }
+    },
+    computed: {
+        ...mapGetters([
+            'scoreNumber'
+        ]),
+    },
 }
 </script>
 
