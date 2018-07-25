@@ -1,7 +1,8 @@
 <template>
     <div id="atoutCursor">
         <p>Nombre de curseur: {{ cursorNumber }}</p>
-        <button @click="incrementCursorNumber">Ajout d'un curseur</button>
+        <button v-if="$store.state.scoreNumber >= cursorPrice" @click="cursorInteract">Curseur +1 ({{ cursorPrice }})</button>
+        <button v-else disabled>Curseur +1 ({{ cursorPrice }})</button>
     </div>
 </template>
 
@@ -14,11 +15,12 @@
         computed: {
             ...mapGetters('atoutStore', [
                 'cursorNumber',
+                'cursorPrice'
             ])
         },
         methods: {
-            ...mapMutations('atoutStore', [
-                'incrementCursorNumber',
+            ...mapMutations([
+                'cursorInteract',
             ])
         }
     }

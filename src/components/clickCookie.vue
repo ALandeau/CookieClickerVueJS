@@ -1,6 +1,6 @@
 <template>
     <div id="scoreBoard">
-        <h2>{{ scoreNumber }}</h2>
+        <h2>{{ scoreNumber | round }}</h2>
         <button @click="incrementScoreNumber">Click</button>
     </div>
 </template>
@@ -25,6 +25,12 @@
         },
         mounted(){
             this.autoIncrementScoreNumber();
+        },
+        filters: {
+            round: function (value) {
+                value = parseFloat(value);
+                return value.toFixed(0);
+            }
         }
     }
 </script>

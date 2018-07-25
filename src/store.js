@@ -8,6 +8,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         scoreNumber: VueCookie.get('score'),
+        globalTimer: 0
     },
     getters: {
         scoreNumber: state => state.scoreNumber,
@@ -18,20 +19,27 @@ export default new Vuex.Store({
             VueCookie.set('score', state.scoreNumber);
         },
         autoIncrementScoreNumber(state) {
-
-            // TODO: grandma increment 1 per second
-            if (state.atoutStore.grandmaNumber) {
-                setInterval(function () {
-                    state.scoreNumber = +state.scoreNumber + +state.atoutStore.grandmaNumber;
-                }, 1000);
-            }
-
-            // TODO: cursor increment 1 per 10 second
-            if (state.atoutStore.cursorNumber) {
-                setInterval(function () {
-                    state.scoreNumber = +state.scoreNumber + +state.atoutStore.cursorNumber;
-                }, 10000);
-            }
+            if(state.atoutStore.grandmaNumber) state.globalTimer = state.globalTimer + +state.atoutStore.grandmaNumber;
+            if(state.atoutStore.cursorNumber) state.globalTimer = state.globalTimer + (+state.atoutStore.cursorNumber / 10);
+            setInterval(function () {state.scoreNumber = +state.scoreNumber + +state.globalTimer}, 1000);
+        },
+        grandmaInteract(state) {
+            let grandmaPrice = state.atoutStore.grandmaPrice;
+            state.scoreNumber = state.scoreNumber - grandmaPrice;
+            state.atoutStore.grandmaNumber++;
+            grandmaPrice = +grandmaPrice * (((state.atoutStore.grandmaNumber / 10)) + 1);
+            grandmaPrice = Math.round(grandmaPrice);
+            state.atoutStore.grandmaPrice = grandmaPrice;
+            VueCookie.set('grandma', state.atoutStore.grandmaNumber)
+        },
+        cursorInteract(state) {
+            let cursorPrice = state.atoutStore.cursorPrice;
+            state.scoreNumber = state.scoreNumber - cursorPrice;
+            state.atoutStore.cursorNumber++;
+            cursorPrice = +cursorPrice * (((state.atoutStore.cursorNumber / 10)) + 1);
+            cursorPrice = Math.round(cursorPrice);
+            state.atoutStore.cursorPrice = cursorPrice;
+            VueCookie.set('cursor', state.atoutStore.cursorNumber)
         }
     },
     modules: {

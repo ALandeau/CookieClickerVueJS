@@ -1,7 +1,8 @@
 <template>
     <div id="atoutGrandma">
         <p>Nombre de grand-mère: {{ grandmaNumber }}</p>
-        <button @click="incrementGrandmaNumber">Ajout d'une mamie</button>
+        <button v-if="$store.state.scoreNumber >= grandmaPrice" @click="grandmaInteract">Grand-Mère +1 ({{ grandmaPrice }})</button>
+        <button v-else disabled>Grand-Mère +1 ({{ grandmaPrice }})</button>
     </div>
 </template>
 
@@ -13,12 +14,13 @@
         name: "atoutGrandma",
         computed: {
             ...mapGetters('atoutStore', [
-                'grandmaNumber'
+                'grandmaNumber',
+                'grandmaPrice'
             ])
         },
         methods: {
-            ...mapMutations('atoutStore', [
-                'incrementGrandmaNumber',
+            ...mapMutations([
+                'grandmaInteract',
             ])
         }
     }

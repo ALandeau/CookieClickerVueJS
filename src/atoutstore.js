@@ -4,21 +4,14 @@ export const atoutStore = {
     namespaced: true,
     state: {
         grandmaNumber: VueCookie.get('grandma'),
-        cursorNumber: VueCookie.get('cursor')
+        cursorNumber: VueCookie.get('cursor'),
+        grandmaPrice: 100,
+        cursorPrice: 10,
     },
     getters: {
         grandmaNumber: state => state.grandmaNumber,
         cursorNumber: state => state.cursorNumber,
-        scoreNumber: state => state.scoreNumber,
-    },
-    mutations: {
-        incrementGrandmaNumber(state) {
-            state.grandmaNumber++;
-            VueCookie.set('grandma', state.grandmaNumber)
-        },
-        incrementCursorNumber(state) {
-            state.cursorNumber++;
-            VueCookie.set('cursor', state.cursorNumber)
-        }
+        grandmaPrice: state => state.grandmaPrice,
+        cursorPrice: state => state.cursorPrice
     }
 };
