@@ -1,8 +1,27 @@
 <template>
-    <div id="atoutGrandma">
-        <p>Nombre de grand-mère: {{ grandmaNumber }}</p>
-        <button v-if="$store.state.scoreNumber >= grandmaPrice" @click="grandmaInteract">Grand-Mère +1 ({{ grandmaPrice }})</button>
-        <button v-else disabled>Grand-Mère +1 ({{ grandmaPrice }})</button>
+    <div id="atoutGrandma" class="atout-element">
+        <div v-if="$store.state.scoreNumber >= grandmaPrice" @click="grandmaInteract" class="add-element enable">
+            <div class="element-image"><img src="../../assets/images/grandma.png" alt=""></div>
+            <div class="element-wrapper">
+                <h3 class="element-label">Grand-mère</h3>
+                <div class="element-price">
+                    <p class="image-center"><img src="../../assets/images/perfectCookie.png"></p>
+                    <p class="price-enable">{{ grandmaPrice }}</p>
+                </div>
+            </div>
+            <div class="element-count"><p>{{ grandmaNumber }}</p></div>
+        </div>
+        <div v-else class="add-element disable">
+            <div class="element-image"><img src="../../assets/images/grandma.png" alt=""></div>
+            <div class="element-wrapper">
+                <h3 class="element-label">Grand-mère</h3>
+                <div class="element-price">
+                    <p class="image-center"><img src="../../assets/images/perfectCookie.png"></p>
+                    <p class="price-disable">{{ grandmaPrice }}</p>
+                </div>
+            </div>
+            <div class="element-count"><p>{{ grandmaNumber }}</p></div>
+        </div>
     </div>
 </template>
 
@@ -26,6 +45,6 @@
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 
 </style>

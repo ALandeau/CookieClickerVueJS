@@ -1,7 +1,10 @@
 <template>
-    <div id="scoreBoard">
+    <div id="score">
         <h2>{{ scoreNumber | round }}</h2>
-        <button @click="incrementScoreNumber">Click</button>
+        <div @click="incrementScoreNumber" class="input-block">
+            <img src="../assets/images/perfectCookie.png" alt="perfect cookie">
+        </div>
+        <!--<button @click="reset">Reset Value</button>-->
     </div>
 </template>
 
@@ -21,20 +24,47 @@
                 'incrementScoreNumber',
                 'getCookieStatement',
                 'autoIncrementScoreNumber'
-            ])
+            ]),
+            reset: function () {
+                this.$cookie.set('score', 0);
+                this.$cookie.set('grandma', 0);
+                this.$cookie.set('cursor', 0);
+            }
         },
         mounted(){
             this.autoIncrementScoreNumber();
         },
         filters: {
             round: function (value) {
-                value = parseFloat(value);
-                return value.toFixed(0);
+                return parseFloat(value).toFixed(0);
             }
         }
     }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+    #score {
+        grid-area: score;
+        background: url("../assets/images/bg_cookie.png") repeat;
+        background-size: auto auto;
+        border-right: solid #CE6D39 10px;
 
+        h2{
+            font: {size: 35pt; weight: 600}
+            background-color: #383A3F;
+            color: #FFF;
+            padding: 10px 0; margin: 40px 0;
+        }
+
+        .input-block {
+            cursor: pointer;
+            img {
+                transition: max-width ease-in 0.1s;
+                max-height: 70%; max-width: 70%;
+                &:active{
+                    max-height: 54%; max-width: 54%;
+                }
+            }
+        }
+    }
 </style>

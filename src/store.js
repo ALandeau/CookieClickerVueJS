@@ -19,9 +19,11 @@ export default new Vuex.Store({
             VueCookie.set('score', state.scoreNumber);
         },
         autoIncrementScoreNumber(state) {
-            if(state.atoutStore.grandmaNumber) state.globalTimer = state.globalTimer + +state.atoutStore.grandmaNumber;
-            if(state.atoutStore.cursorNumber) state.globalTimer = state.globalTimer + (+state.atoutStore.cursorNumber / 10);
-            setInterval(function () {state.scoreNumber = +state.scoreNumber + +state.globalTimer}, 1000);
+            setInterval(function () {
+                state.globalTimer = +state.atoutStore.grandmaNumber + (+state.atoutStore.cursorNumber / 10);
+                state.scoreNumber = +state.scoreNumber + +state.globalTimer;
+                VueCookie.set('score', state.scoreNumber);
+            }, 1000);
         },
         grandmaInteract(state) {
             let grandmaPrice = state.atoutStore.grandmaPrice;
