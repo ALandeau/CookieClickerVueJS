@@ -1,5 +1,5 @@
 <template>
-    <div id="atoutGrandma" class="atout-element">
+    <div id="atout-grandma" class="atout-element">
         <div v-if="$store.state.scoreNumber >= grandmaPrice" @click="grandmaInteract" class="add-element enable">
             <div class="element-image"><img src="../../assets/images/grandma.png" alt=""></div>
             <div class="element-wrapper">
@@ -26,25 +26,19 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import { mapMutations } from 'vuex'
+import { mapGetters } from "vuex";
+import { mapMutations } from "vuex";
 
-    export default {
-        name: "atoutGrandma",
-        computed: {
-            ...mapGetters('atoutStore', [
-                'grandmaNumber',
-                'grandmaPrice'
-            ])
-        },
-        methods: {
-            ...mapMutations([
-                'grandmaInteract',
-            ])
-        }
-    }
+export default {
+  name: "atoutGrandma",
+  computed: {
+    ...mapGetters("atoutStore", ["grandmaNumber", "grandmaPrice"])
+  },
+  methods: {
+    ...mapMutations(["grandmaInteract"])
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>

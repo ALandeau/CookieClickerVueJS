@@ -2,7 +2,7 @@
 
 exports[`atoutCookie.vue renders the correct markup 1`] = `
 <div id="atout">
-  <div id="atoutCursor" class="atout-element">
+  <div id="atout-cursor" class="atout-element">
     <div class="add-element disable">
       <div class="element-image">
         <img src="../../assets/images/cursor.png" alt="">
@@ -17,11 +17,11 @@ exports[`atoutCookie.vue renders the correct markup 1`] = `
         </div>
       </div>
       <div class="element-count">
-        <p></p>
+        <p>0</p>
       </div>
     </div>
   </div>
-  <div id="atoutGrandma" class="atout-element">
+  <div id="atout-grandma" class="atout-element">
     <div class="add-element disable">
       <div class="element-image">
         <img src="../../assets/images/grandma.png" alt="">
@@ -36,7 +36,7 @@ exports[`atoutCookie.vue renders the correct markup 1`] = `
         </div>
       </div>
       <div class="element-count">
-        <p></p>
+        <p>0</p>
       </div>
     </div>
   </div>

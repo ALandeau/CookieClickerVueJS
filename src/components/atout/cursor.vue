@@ -1,5 +1,5 @@
 <template>
-    <div id="atoutCursor" class="atout-element">
+    <div id="atout-cursor" class="atout-element">
         <div v-if="$store.state.scoreNumber >= cursorPrice" @click="cursorInteract" class="add-element enable">
             <div class="element-image"><img src="../../assets/images/cursor.png" alt=""></div>
             <div class="element-wrapper">
@@ -26,25 +26,19 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
-    import { mapMutations } from 'vuex'
+import { mapGetters } from "vuex";
+import { mapMutations } from "vuex";
 
-    export default {
-        name: "atoutCursor",
-        computed: {
-            ...mapGetters('atoutStore', [
-                'cursorNumber',
-                'cursorPrice'
-            ])
-        },
-        methods: {
-            ...mapMutations([
-                'cursorInteract',
-            ])
-        }
-    }
+export default {
+  name: "atoutCursor",
+  computed: {
+    ...mapGetters("atoutStore", ["cursorNumber", "cursorPrice"])
+  },
+  methods: {
+    ...mapMutations(["cursorInteract"])
+  }
+};
 </script>
 
 <style lang="scss" scoped>
-
 </style>

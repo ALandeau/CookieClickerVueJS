@@ -2,10 +2,9 @@
 
 exports[`clickCookie.vue renders the correct markup 1`] = `
 <div id="score">
-  <h2>NaN</h2>
+  <h2>0</h2>
   <div class="input-block">
     <img src="../assets/images/perfectCookie.png" alt="perfect cookie">
   </div>
-  <button>Reset Value</button>
 </div>
 `;
